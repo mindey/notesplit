@@ -38,4 +38,4 @@ process(stack, frozenset())
 for who, data in out.items():
     if not os.path.exists("./%s" % (indiv[who],)):
         os.makedirs(indiv[who])
-    open("%s/OnePage.wiki" % (indiv[who],), 'w').write(data)
+    open("{}/{}".format(indiv[who],SOURCE), 'w').write(data)
