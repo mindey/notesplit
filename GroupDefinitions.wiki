@@ -1,0 +1,12 @@
+{
+    "individuals": {
+        "friend1": "./wiki/friend1",
+        "friend2": "./wiki/friend2",
+        "friend3": "./wiki/friend3"
+    },
+    "groups": {
+        "all": ["friend1", "friend2", "friend3"],
+        "group1": ["friend1","friend2"],
+        "group2": ["friend2"]
+    }
+}

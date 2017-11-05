@@ -1,0 +1,16 @@
+This is my private wiki... 
+
+By default, the diary is your private diary... Unless, you want {:all|SOMETHING:} all of your friends to see, or one of your friends to see {:friend1| JUST FOR YOU :}, or a group, say {:group1| MY DEAR ONES :} be shared with some specific friends.
+
+
+{:group1|
+== Example Story ==
+One day, I realized that we could use shared diaries on VIM, and I hacked a solution to let my dear friend also see my diary. We started writing diaries together, side-by-side, every day. We share them via Dropbox, but encrypted, and using gnupg plugin for VimWiki.
+
+It is a wonder to share minds like that together. I think it is like being two hemispheres of brain, connected via corpus callosum. We merged to form something new! Two minds working in unison.
+
+{:-group2|Then. We thought we should share more with our friends, and we found BTSync, which is like Dropbox, but P2P. It was the solution, because we didn't need to teach every friend how to use GPG and VIM. However, there is a little problem that we would like to fix, but have no time right now.:}
+
+We already have a Python script {:-friend1|( https://github.com/Mindey/diary-scripts/blob/master/diary-cron.py ) :}that does something similar. We would like to have a general solution, which goes as deep into the hierarchy defined by nested braces {: :} as needed to parse them.
+:}
+
