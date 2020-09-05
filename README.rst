@@ -1,7 +1,9 @@
 Notesplit
 =========
 
-``pip install 1food``
+Share your minds.
+
+``pip install notesplit``
 
 You use ``notesplit``, when you want to split and combine plain text
 notes files for sharing with different parties, simply denoteding
