@@ -17,7 +17,7 @@ many cases.
 
 It is useful in combination with file sharing software like `syncthing <https://syncthing.net/>`__ to synchronize ideas and data with specific friends.
 
-.. code:: bash
+::
 
     $ notesplit --help
 
