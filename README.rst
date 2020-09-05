@@ -1,6 +1,8 @@
 Notesplit
 =========
 
+``pip install 1food``
+
 You use ``notesplit``, when you want to split and combine plain text
 notes files for sharing with different parties, simply denoteding
 inside the plain-text notes, what parts of text to share and with whom,
