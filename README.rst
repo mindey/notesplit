@@ -10,7 +10,7 @@ notes files for sharing with different parties, simply denoteding
 inside the plain-text notes, what parts of text to share and with whom,
 like ``{:whom| .. my shared text .. :}``, where ``whom`` is either
 individual or group, and exclude whom not to share to by
-``{:whom|{:-notwhom| .. shared text .. :}``, and where you can share
+``{:whom|{:-notwhom| .. shared text .. :}:}``, and where you can share
 already shared parts with multiple parties, like
 ``{:whom1| hello {:whom2|world:} :}``, which is sufficient to cover
 many cases.
