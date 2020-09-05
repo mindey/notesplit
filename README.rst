@@ -34,7 +34,7 @@ It is useful in combination with file sharing software like `syncthing <https://
 Usage
 =====
 
-Running ``python split.py -s OnePage.wiki -g GroupDefinitions.wiki``
+Running ``notesplit -s OnePage.wiki -g GroupDefinitions.wiki``
 will split a source file ``OnePage.wiki`` and copy it to the folders
 defined in ``GroupDefinitions.wiki``, implementing sharing with one
 friend, sharing with group of friends, or sharing with group and
