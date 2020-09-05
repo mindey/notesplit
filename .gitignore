@@ -1,0 +1,4 @@
+.env
+*__pycache__*
+dist
+notesplit.egg-info/
