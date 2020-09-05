@@ -45,7 +45,7 @@ share a part of it with someone else's diary.
 
 **OnePage.wiki**
 
-.. code:: wiki
+::
 
     This is your private wiki...
 
