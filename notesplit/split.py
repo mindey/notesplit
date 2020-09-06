@@ -10,8 +10,8 @@ def main():
     args = parser.parse_args()
 
     CWD = pathlib.Path(os.getcwd())
-    SOURCE = pathlib.Path(args.source)             # e.g., 'page.txt'
-    GROUPS = pathlib.Path(args.groups)             # e.g., 'groups.json'
+    SOURCE = pathlib.Path(args.source)     # e.g., 'page.txt'
+    GROUPS = pathlib.Path(args.groups)     # e.g., 'groups.json'
     BASE = pathlib.Path(args.base or CWD)  # e.g., '~/.wiki'
 
     for i, p in enumerate([SOURCE, GROUPS, BASE]):
