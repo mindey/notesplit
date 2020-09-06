@@ -37,9 +37,9 @@ It is useful in combination with file sharing software like `syncthing <https://
 Usage
 =====
 
-Running ``notesplit -s OnePage.wiki -g GroupDefinitions.wiki``
-will split a source file ``OnePage.wiki`` and copy it to the folders
-defined in ``GroupDefinitions.wiki``, implementing sharing with one
+Running ``notesplit -s page.txt -g groups.json``
+will split a source file ``page.txt`` and copy it to the folders
+defined in ``groups.json``, implementing sharing with one
 friend, sharing with group of friends, or sharing with group and
 excluding parts of the content from a particular friend, or another
 group (group intersections).
@@ -50,7 +50,7 @@ User story
 Imagine that you write your private diary in a text file, and want to
 share a part of it with someone else's diary.
 
-**OnePage.wiki**
+**page.txt**
 
 ::
 
@@ -74,7 +74,7 @@ share a part of it with someone else's diary.
     We already have a Python script {:-friend1|( https://github.com/Mindey/diary-scripts/blob/master/diary-cron.py ) :}that does something similar. We would like to have a general solution, which goes as deep into the hierarchy defined by nested braces {: :} as needed to parse them.
     :}
 
-This is your groups.. **GroupDefinitions.wiki**
+This is your groups.. **groups.json**
 
 .. code:: json
 
