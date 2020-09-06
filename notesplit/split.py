@@ -15,7 +15,7 @@ def main():
 
     group_defs = json.load(open(GROUPS, 'r'))
 
-    indiv  = {k: os.path.abspath(os.path.expanduser(os.path.expandvars(indiv[k])))
+    indiv  = {k: os.path.abspath(os.path.expanduser(os.path.expandvars(group_defs['individuals'][k])))
               for k in group_defs['individuals']}
     groups = group_defs['groups']
 
