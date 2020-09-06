@@ -15,7 +15,7 @@ already shared parts with multiple parties, like
 ``{:whom1| hello {:whom2|world:} :}``, which is sufficient to cover
 many cases.
 
-.. image:: https://wiki.mindey.com/shared/shots/bcb511b4e2279582a4dddbcaa.png
+.. image:: https://wiki.mindey.com/shared/shots/bcb511b4e2279582a4dddbcax.png
    :target: https://wiki.mindey.com/shared/shots/d953d9e53b985d05faff86738-notesplit.mp4
 
 It is useful in combination with file sharing software like `syncthing <https://syncthing.net/>`__ to synchronize ideas and data with specific friends.
