@@ -32,7 +32,7 @@ It is useful in combination with file sharing software like `syncthing <https://
                             Source text file to parse.
       -g GROUPS, --groups GROUPS
                             Groups definitions json file.
-
+      -b BASE, --base BASE  Base directory of source wiki (to trim paths to).
 
 Usage
 =====
