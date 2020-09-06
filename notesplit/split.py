@@ -9,9 +9,17 @@ def main():
     parser.add_argument('-b', '--base', help='Base directory of source wiki (to trim paths to).')
     args = parser.parse_args()
 
+    CWD = pathlib.Path(os.getcwd())
     SOURCE = pathlib.Path(args.source)             # e.g., 'page.txt'
     GROUPS = pathlib.Path(args.groups)             # e.g., 'groups.json'
-    BASE = pathlib.Path(args.base or os.getcwd())  # e.g., '~/.wiki'
+    BASE = pathlib.Path(args.base or CWD)  # e.g., '~/.wiki'
+
+    for i, p in enumerate([SOURCE, GROUPS, BASE]):
+        if p.expanduser() == p and not str(p).startswith(p._flavour.sep):
+            p = pathlib.Path(os.path.join(CWD, p))
+            if i == 0: SOURCE = p
+            if i == 1: GROUPS = p
+            if i == 2: BASE = p
 
     group_defs = json.load(open(GROUPS, 'r'))
 
