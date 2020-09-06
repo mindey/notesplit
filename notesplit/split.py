@@ -6,16 +6,19 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-s', '--source', help='Source text file to parse.')
     parser.add_argument('-g', '--groups', help='Groups definitions json file.')
-    parser.add_argument('-b', '--base', help='Base directory of wiki (to trim paths to).')
+    parser.add_argument('-b', '--base', help='Base directory of source wiki (to trim paths to).')
     args = parser.parse_args()
 
-    SOURCE = args.source # e.g., 'page.txt'
-    GROUPS = args.groups # e.g., 'groups.json'
-    BASE = pathlib.Path(args.base or os.getcwd())
+    SOURCE = pathlib.Path(args.source)             # e.g., 'page.txt'
+    GROUPS = pathlib.Path(args.groups)             # e.g., 'groups.json'
+    BASE = pathlib.Path(args.base or os.getcwd())  # e.g., '~/.wiki'
 
     group_defs = json.load(open(GROUPS, 'r'))
-    indiv, groups  = group_defs['individuals'], group_defs['groups']
-    indiv = {k: os.path.abspath(os.path.expanduser(os.path.expandvars(indiv[k]))) for k in indiv}
+
+    indiv  = {k: os.path.abspath(os.path.expanduser(os.path.expandvars(indiv[k])))
+              for k in group_defs['individuals']}
+    groups = group_defs['groups']
+
     for k, g in groups.items(): groups[k] = frozenset(g)
 
     stack = []
@@ -40,8 +43,7 @@ def main():
                 for who in group: out[who] += foo
     process(stack, frozenset())
 
-    p = pathlib.Path(SOURCE)
-    SPATH, SFILE = str(p.parent.expanduser()), p.name
+    SPATH, SFILE = str(SOURCE.parent.expanduser()), SOURCE.name
     if SPATH.startswith(str(BASE)): SPATH = SPATH[len(str(BASE)):]
     if SPATH.startswith(BASE._flavour.sep): SPATH = SPATH[1:]
 
