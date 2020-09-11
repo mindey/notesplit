@@ -57,9 +57,11 @@ def main():
 
     for who, data in out.items():
         path = os.path.join(indiv[who], SPATH)
-        if not os.path.exists(path):
-            os.makedirs(path)
+
         if data:
+            if not os.path.exists(path):
+                os.makedirs(path)
+
             open(os.path.join(path, SFILE), 'w').write(data)
 
 
