@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-import json, os, argparse, pathlib
-
-import regex as re
+import json, os, re, argparse, pathlib
 from collections import defaultdict
 
 def main():
@@ -10,12 +8,15 @@ def main():
     parser.add_argument('-s', '--source', help='Source text file to parse.')
     parser.add_argument('-g', '--groups', help='Groups definitions json file.')
     parser.add_argument('-b', '--base', help='Base directory of source wiki (to trim paths to).')
+    parser.add_argument('-d', '--delimiters', help='Default is, "{:,|,:}", pass comma-separated delimiters.')
     args = parser.parse_args()
 
     CWD = pathlib.Path(os.getcwd())
     SOURCE = pathlib.Path(args.source)     # e.g., 'page.txt'
     GROUPS = pathlib.Path(args.groups)     # e.g., 'groups.json'
     BASE = pathlib.Path(args.base or CWD)  # e.g., '~/.wiki'
+    DELIMITERS = args.delimiters or '{:,|,:}'
+    delims = DELIMITERS.split(',')
 
     for i, p in enumerate([SOURCE, GROUPS, BASE]):
         if p.expanduser() == p and not str(p).startswith(p._flavour.sep):
@@ -32,16 +33,20 @@ def main():
 
     for k, g in groups.items(): groups[k] = frozenset(g)
 
+    pattern = '(%s)' % '|'.join([
+        '|' in delim and re.escape(delim) or delim
+        for delim in delims])
+
     stack = []
     cur = stack
-    for tok in re.compile('({:|\||:})').split(open(SOURCE, 'r').read()):
-        if tok == '{:':   new = []; cur += [new]; stack += [cur]; cur = new
-        elif tok == ':}': cur = stack.pop()
+    for tok in re.compile(pattern).split(open(SOURCE, 'r').read()):
+        if tok == delims[0]:   new = []; cur += [new]; stack += [cur]; cur = new
+        elif tok == delims[-1]: cur = stack.pop()
         else:             cur += [tok]
 
     out = defaultdict(str)
     def process(stack, group):
-        if len(stack) >= 2 and stack[1] == '|':
+        if len(stack) >= 2 and stack[1] == delims[1]:
             if stack[0][0] == '-':
                 group = group - groups.get(stack[0][1:], set([stack[0][1:]]))
             else:

@@ -30,6 +30,7 @@ It is useful in combination with file sharing software like `syncthing <https://
       -s SOURCE, --source SOURCE  Source text file to parse.
       -g GROUPS, --groups GROUPS  Groups definitions json file.
       -b BASE, --base BASE  Base directory of source wiki (to trim paths to).
+      -d DELIMITERS, --delimiters  Default is, "{:,|,:}", pass comma-separated delimiters.
 
 Replace ``notesplit`` with ``notesync`` to split all files in a directory.
 
