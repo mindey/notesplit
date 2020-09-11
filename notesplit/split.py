@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-import json, re, os, argparse, pathlib
+import json, os, argparse, pathlib
+
+import regex as re
 from collections import defaultdict
 
 def main():
@@ -32,7 +34,7 @@ def main():
 
     stack = []
     cur = stack
-    for tok in re.compile('({:(?=.*:})|((?<={:.*)\|(?=.*:}))|(?<={:.*):})').split(open(SOURCE, 'r').read()):
+    for tok in re.compile('({:|\||:})').split(open(SOURCE, 'r').read()):
         if tok == '{:':   new = []; cur += [new]; stack += [cur]; cur = new
         elif tok == ':}': cur = stack.pop()
         else:             cur += [tok]
