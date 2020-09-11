@@ -5,7 +5,7 @@ with open('README.rst', 'r', encoding='utf-8') as f:
 
 setup(
     name='notesplit',
-    version='1.0.5',
+    version='1.0.6',
     description="Write your private diary in text files, and share parts of it with someone else's diaries.",
     long_description=long_description,
     long_description_content_type='text/rst',

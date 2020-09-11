@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json, re, os, argparse, pathlib
+from collections import defaultdict
 
 def main():
 
@@ -29,6 +30,10 @@ def main():
 
     for k, g in groups.items(): groups[k] = frozenset(g)
 
+    # ISSUE: having symbol | outside of {: :} disrupts operation.
+    # - modify regex?
+    # - define a rare sequence, and apply to | outside {: :}, then restore?
+
     stack = []
     cur = stack
     for tok in re.compile('({:|\||:})').split(open(SOURCE, 'r').read()):
@@ -36,7 +41,7 @@ def main():
         elif tok == ':}': cur = stack.pop()
         else:             cur += [tok]
 
-    out = { k:'' for k in indiv }
+    out = defaultdict(str)
     def process(stack, group):
         if len(stack) >= 2 and stack[1] == '|':
             if stack[0][0] == '-':
@@ -56,13 +61,14 @@ def main():
     if SPATH.startswith(BASE._flavour.sep): SPATH = SPATH[1:]
 
     for who, data in out.items():
-        path = os.path.join(indiv[who], SPATH)
+        if who in indiv:
+            path = os.path.join(indiv[who], SPATH)
 
-        if data:
-            if not os.path.exists(path):
-                os.makedirs(path)
+            if data:
+                if not os.path.exists(path):
+                    os.makedirs(path)
 
-            open(os.path.join(path, SFILE), 'w').write(data)
+                open(os.path.join(path, SFILE), 'w').write(data)
 
 
 if __name__ == '__main__':
