@@ -5,7 +5,7 @@ with open('README.rst', 'r', encoding='utf-8') as f:
 
 setup(
     name='notesplit',
-    version='1.0.3',
+    version='1.0.4',
     description="Write your private diary in text files, and share parts of it with someone else's diaries.",
     long_description=long_description,
     long_description_content_type='text/rst',
@@ -21,7 +21,8 @@ setup(
     zip_safe=False,
     entry_points = {
         'console_scripts': [
-            'notesplit=notesplit.split:main'
+            'notesplit=notesplit.split:main',
+            'notesync=notesplit.sync:main'
         ],
     }
 )

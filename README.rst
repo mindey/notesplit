@@ -27,12 +27,11 @@ It is useful in combination with file sharing software like `syncthing <https://
     usage: notesplit [-h] [-s SOURCE] [-g GROUPS]
 
     optional arguments:
-      -h, --help            show this help message and exit
-      -s SOURCE, --source SOURCE
-                            Source text file to parse.
-      -g GROUPS, --groups GROUPS
-                            Groups definitions json file.
+      -s SOURCE, --source SOURCE  Source text file to parse.
+      -g GROUPS, --groups GROUPS  Groups definitions json file.
       -b BASE, --base BASE  Base directory of source wiki (to trim paths to).
+
+Replace ``notesplit`` with ``notesync`` to split all files in a directory.
 
 Usage
 =====

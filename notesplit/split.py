@@ -59,7 +59,8 @@ def main():
         path = os.path.join(indiv[who], SPATH)
         if not os.path.exists(path):
             os.makedirs(path)
-        open(os.path.join(path, SFILE), 'w').write(data)
+        if data:
+            open(os.path.join(path, SFILE), 'w').write(data)
 
 
 if __name__ == '__main__':
