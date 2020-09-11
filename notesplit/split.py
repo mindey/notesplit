@@ -30,13 +30,9 @@ def main():
 
     for k, g in groups.items(): groups[k] = frozenset(g)
 
-    # ISSUE: having symbol | outside of {: :} disrupts operation.
-    # - modify regex?
-    # - define a rare sequence, and apply to | outside {: :}, then restore?
-
     stack = []
     cur = stack
-    for tok in re.compile('({:|\||:})').split(open(SOURCE, 'r').read()):
+    for tok in re.compile('({:(?=.*:})|((?<={:.*)\|(?=.*:}))|(?<={:.*):})').split(open(SOURCE, 'r').read()):
         if tok == '{:':   new = []; cur += [new]; stack += [cur]; cur = new
         elif tok == ':}': cur = stack.pop()
         else:             cur += [tok]
