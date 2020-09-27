@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import json, re, os, argparse, pathlib, xattr, fnmatch, shutil
 
-def main(ignore_dot_files=True, listen_gitignore=True):
+def main(ignore_dot_files=False, listen_gitignore=False):
     """ Copies files with user.groups, user.individuals into folders, based on groups.json"""
 
     parser = argparse.ArgumentParser()
