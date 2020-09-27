@@ -94,6 +94,7 @@ This is your groups.. **groups.json**
 To set recipients to share files, you may ``setfattr / getattr`` commands:
 
 ::
+
     setfattr -n user.to -v "group1,-friend1" myfile.jpg
 
     getfattr myfile.jpg
