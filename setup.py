@@ -5,7 +5,7 @@ with open('README.rst', 'r', encoding='utf-8') as f:
 
 setup(
     name='notesplit',
-    version='1.0.9',
+    version='1.1.0',
     description="Write your private diary in text files, and share parts of it with someone else's diaries.",
     long_description=long_description,
     long_description_content_type='text/rst',
@@ -14,7 +14,9 @@ setup(
     author_email='~@mindey.com',
     license='MIT',
     packages = find_packages(exclude=['docs', 'tests*']),
-    install_requires=[],
+    install_requires=[
+        'xattr'
+    ],
     extras_require = {
         'test': ['coverage', 'pytest', 'pytest-cov'],
     },
@@ -22,7 +24,8 @@ setup(
     entry_points = {
         'console_scripts': [
             'notesplit=notesplit.split:main',
-            'notesync=notesplit.sync:main'
+            'notesync=notesplit.sync:main',
+            'filesync=notesplit.syncfiles:main'
         ],
     }
 )

@@ -91,6 +91,17 @@ This is your groups.. **groups.json**
         }
     }
 
+To set recipients to share files, you may ``setfattr / getattr`` commands:
+
+::
+    setfattr -n user.to -v "group1,-friend1" myfile.jpg
+
+    getfattr myfile.jpg
+    getfattr -n user.to myfile.jpg
+    setfattr -x user.to myfile.jpg
+
+Then, ``filesync -s ./myfile.jpg -g groups.json``, where ``./myfiles`` can also be a directory.
+
 You get the splits made into the folders defined, and then, you can use
 something like `syncthing <https://syncthing.net/>`__ to synchronize
 each of the folders with specific friends.
